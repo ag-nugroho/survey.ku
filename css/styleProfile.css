@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    position: relative; /* Ensure the wrapper is relatively positioned */
+    background-color: #e6e6e6;
+}
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    z-index: 1; /* Lower z-index to ensure it's behind the main content */
+    transition: all .25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #E6E6E6;
+    height: 130vh;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+#sidebar.expand {
+    width: 270px;
+    min-width: 270px;
+}
+
+#toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    margin-top: 12px;
+    margin-right: 8px;
+    margin-left: 2px;
+}
+
+.sidebar-logo {
+    margin-top: 12px;
+}
+
+.campus {
+    font-size: 12px;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-logo span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: black;
+    /* color: rgba(0, 0, 0, 0.5); */
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin: auto;
+}
+
+.sidebar-link img {
+    margin-right: 10px;
+}
+
+a.sidebar-link:hover {
+    background-color: #cacaca;
+    border-radius: 10px;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+/* .sidebar-link:hover img {
+    opacity: 1;
+} */
+
+.sidebar-item:hover span {
+    color: black;
+}
+
+.sidebar-item i {
+    font-size: 20px;
+}
+
+
+
+#sidebar .sidebar-dropdown {
+    position: relative;
+    padding-left: 20px; /* Jarak Gambar dari Garis */
+}
+
+#sidebar .sidebar-dropdown::after {
+    content: '';
+    position: absolute;
+    left: 33px; /* Jarak Garis Dari Kiri */
+    top: 0;
+    bottom: 5px;
+    width: 0.5px;
+    background-color: black;
+    opacity: 0.25;
+}
+
+#sidebar .sidebar-item .sidebar-link img {
+    margin-right: 10px;
+}
+
+#sidebar .sidebar-dropdown .sidebar-item {
+    margin-left: 20px;
+}
+
+#sidebar .sidebar-dropdown .sidebar-item .sidebar-link {
+    padding-left: 10px;
+}
+
+#sidebar .sidebar-dropdown.collapse.show::before {
+    display: block;
+}
+
+#sidebar .sidebar-dropdown.collapse::before {
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown{
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #E6E6E6;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+#sidebar.expand a.sidebar-link span {
+    display: inline;
+}
+
+#sidebar .expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5em;
+    top: 1.4em;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar .expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-footer {
+    width: 112px;
+    text-align:left;
+    justify-content: center;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar-footer-link:hover {
+    background-color: #cacaca;
+}
+
+a.sidebar-footer-link {
+    display: block;
+    padding: 0.625rem;
+    color: black;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+    border: 1px solid black;
+    border-radius: 16px;
+}
+
+.sidebar-footer-link img {
+    opacity: 1;
+    margin-right: 10px;
+}
+
+#sidebar:not(.expand) .sidebar-footer-link span {
+    display: none;
+}
+
+#sidebar:not(.expand) a.sidebar-footer-link{
+    margin-right: 65px
+}
+
+#sidebar:not(.expand) .sidebar-footer-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px 0px 10px;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2; /* Higher z-index to ensure it appears on top of the sidebar */
+    margin-left: 60px; /* Covering the sidebar */
+    left: 0; /* Initial position of the main content */
+    border-radius: 16px;
+    margin: 5px 3px 5px 0px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.role {
+    font-size: 14px;
+}
+
+.identity {
+    color: #7a7a7a;
+}
+
+.edit {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+  
+.edit i {
+    font-size: 25px;
+    color: black;
+}
+
+.edit:hover {
+    background-color: #cacaca;
+}
+
+.extra-margin {
+    margin-bottom: 78px !important;
+}
